@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, {useState} from 'react' 
 import { use } from 'react'
 import { Link } from 'react-router-dom'
@@ -9,19 +10,47 @@ const Signup = () => {
     const[email , setEmail]= useState("")
     const[password , setPassword]= useState("")
     const[phone , setPhone] = useState("")
+
+    // Three states of posting data 
+    const[loading,setLoading]= useState("")
+    const[success, setSuccess] = useState("")
+    const[error, setError]= useState("")
+
+    // Function to handle submit 
+    const handlesubmit = async(e) =>{
+      e.preventDefault()
+      setLoading("Please wait...")
+    
+
+
+    // Create an empty digital envelope 
+    const formdata = new FormData()
+    formdata.append("username", username)
+    formdata.append("email", email)
+    formdata.append("password", password)
+    formdata.append("phone", phone)
+    
+    try {
+      const response = await axios.post("http://higgs.alwaysdata.net/api/signup", formdata)
+      setSuccess(response.data.message)
+      setLoading("")
+    } catch (error) {
+      
+    }
+  }
+
   return (
     <div className="row mt-2n justify-content-center">
         <div className='col-md-6 card shadow'>
             <h1>Signup</h1>
 
             {/* bind the states  */}
-            <h2>the current username is : {username} </h2>
-            <h2>the current email is : {email} </h2>
-            <h2>the current password is : {password} </h2>
-            <h2>the current phone is : {phone} </h2>
+            <h2 className='text-warning'> {loading} </h2>
+            <h2 className='text-success'> {success} </h2>
+            <h2 className='text-danger'> {error} </h2>
             
 
-            <form action="">
+            <form action="" onSubmit={handlesubmit}>
                 <input type="text" placeholder='Enter username' className='form-control' onChange={(e)=>setUsername(e.target.value)}/>
                 <br />
                 <input type="email" placeholder='Enter E-mail' className='form-control' onChange={(e)=>setEmail(e.target.value)} />
@@ -30,7 +59,7 @@ const Signup = () => {
                 <br />
                 <input type="tel" placeholder='Enter phone'className='form-control' onChange={(e)=>setPhone(e.target.value )} />
                 <br />
-                <button className='btn btn-secondary w-100 form-control'>Signup</button>
+                <button type='submit' className='btn btn-secondary w-100 form-control'>Signup</button>
                 <br />
                 <p>Already have an account?    <Link to="/signin">Signin</Link>     </p>
             </form>
