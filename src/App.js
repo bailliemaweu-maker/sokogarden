@@ -4,6 +4,8 @@ import'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter , Routes, Route, Link } from 'react-router-dom';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
+import Addproduct from './components/Addproduct';
+
 function App() {
 
   return (
@@ -18,11 +20,16 @@ function App() {
         <Link to="/signup">Signup</Link> 
         , 
         <Link to="/signin">Signin </Link>
+        ,
+        <Link to="/addproduct">Add product </Link>
+
       </nav>
 
     <Routes>
       <Route path ='/signup' element= {<Signup />} />
       <Route path ='/signin' element= {<Signin/>}  />
+      <Route path ='/addproduct' element= {<Addproduct/>}  />
+
     </Routes>
 
       
