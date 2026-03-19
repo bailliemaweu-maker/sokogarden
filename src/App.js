@@ -6,6 +6,7 @@ import Signup from './components/Signup';
 import Signin from './components/Signin';
 import Addproduct from './components/Addproduct';
 import Getproducts from './components/Getproducts';
+import Makepayment from './components/Makepayment';
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
     
     <div className="App">
       <header className="App-header">
-        <h1>Welcome to Sokogarden</h1>
+        <h1 className='bungee-regular' >Welcome to Sokogarden</h1>
       </header>
 
       <nav>
@@ -31,6 +32,8 @@ function App() {
       <Route path ='/signup' element= {<Signup />} />
       <Route path ='/signin' element= {<Signin/>}  />
       <Route path ='/addproduct' element= {<Addproduct/>}  />
+      <Route path ='/makepayment' element= {<Makepayment/>}  />
+
       
 
     </Routes>

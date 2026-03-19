@@ -2,6 +2,16 @@
   text-align: center;
 }
 
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Dancing+Script:wght@400..700&display=swap');
+
+.bungee-regular {
+  font-family: "Bungee", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
