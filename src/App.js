@@ -15,7 +15,7 @@ function App() {
   return (
     <BrowserRouter>
     
-    <div className="App bg-secondary" >
+    <div className="App " >
       <header className="App-header bg-warning">
         <h1 className='bungee-regular' >Ulinzi Gaming welcome you </h1>
       </header>
