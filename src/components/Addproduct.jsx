@@ -34,7 +34,7 @@ const Addproduct = () => {
     }
 
   return (
-    <div className="row  justify-content-center mt-2">
+    <div className="row  justify-content-center mt-2 ">
         <div className='col-md-8 card shadow p-4'>
             <h1 className='text-danger'>Add Products</h1>
 
@@ -47,16 +47,16 @@ const Addproduct = () => {
 
 
 
-            <form action=""  onSubmit={handlesubmit}>
-                <input type="text" placeholder='Enter Product Name' className='form-control' onChange={(e) =>setProductName(e.target.value)} />
+            <form action=""  onSubmit={handlesubmit} className='bg-white'>
+                <input type="text" placeholder='Enter Product Name' className='form-control bg-secondary' onChange={(e) =>setProductName(e.target.value)} />
                 <br />
-                <textarea name="" id="" placeholder='Enter Product Description' className='form-control' onChange={(e)=>setProductDescription(e.target.value)}></textarea>
+                <textarea name="" id="" placeholder='Enter Product Description ' className='form-control bg-secondary' onChange={(e)=>setProductDescription(e.target.value)}></textarea>
                 <br />
-                <input type="number" placeholder='Enter Product Cost' className='form-control' onChange={(e)=>setProductCost(e.target.value)}/>
+                <input type="number" placeholder='Enter Product Cost' className='form-control bg-secondary' onChange={(e)=>setProductCost(e.target.value)}/>
                 <br />
-                <input type="file" accept='image/*' placeholder='Enter Product Photo' className='form-control' onChange={(e)=>setProductPhoto(e.target.files[0])} />
+                <input type="file" accept='image/*' placeholder='Enter Product Photo' className='form-control bg-secondary' onChange={(e)=>setProductPhoto(e.target.files[0])} />
                 <br />
-                <button type='submit' className='btn btn-success form-control'>Add Product</button>
+                <button type='submit' className='btn btn-success form-control bg-success'>Add Product</button>
             </form>
         </div>
     </div>

@@ -45,12 +45,12 @@ const Signin = () => {
 
 
 
-                <form action="" onSubmit={handlesubmit} >
-                    <input type="text" placeholder='Enter Email' className='form-control' onChange={(e)=> setEmail(e.target.value)} />
+                <form action="" onSubmit={handlesubmit} className='bg-white' >
+                    <input type="text" placeholder='Enter Email' className='form-control bg-secondary' onChange={(e)=> setEmail(e.target.value)} />
                     <br />
-                    <input type="password" placeholder='Enter Password'className='form-control' onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" placeholder='Enter Password'className='form-control bg-secondary' onChange={(e) => setPassword(e.target.value)} />
                     <br />
-                    <button className='btn btn-info form-control w-100'>Signin</button>
+                    <button className='btn btn-info form-control w-100 bg-success'>Signin</button>
                     <br />
                     <p>Don't have an account?   <Link to="/signup">Signup</Link>   </p>
                 </form>

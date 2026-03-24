@@ -1,6 +1,8 @@
 import axios from 'axios'
+import Carousel from './Carousel'
 import React,{useState,useEffect} from 'react'
 import { useNavigate} from 'react-router-dom'
+
 
 const Getproducts = () => {
 let navigate = useNavigate();
@@ -29,12 +31,19 @@ let navigate = useNavigate();
   return (
     <div className="container fluid">
       <div className="row">
+        {/* Carousel goes here   */}
+        <Carousel/>
+
+
+
+
+
         <h1 className='text-primary'>Available products</h1>
         {/* bind the states  */}
         <h2 className='text-warning text-center'>{loading} </h2>
         <h2 className='text-danger text-center'>{error} </h2>
         {products.map(singleproduct=>(
-           <div className="col-md-3 p-4 mb-3">
+           <div className="col-md-3 p-6 mb-3">
             <div className='card shadow h-100'>
 
             <img src={imagepath + singleproduct.product_photo} alt="" style={{height:"200px"}}/>

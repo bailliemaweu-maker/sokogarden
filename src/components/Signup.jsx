@@ -50,16 +50,16 @@ const Signup = () => {
             <h2 className='text-danger'> {error} </h2>
             
 
-            <form action="" onSubmit={handlesubmit}>
-                <input type="text" placeholder='Enter username' className='form-control' onChange={(e)=>setUsername(e.target.value)}/>
+            <form action="" onSubmit={handlesubmit} className='bg-white'>
+                <input type="text" placeholder='Enter username' className='form-control  bg-secondary' onChange={(e)=>setUsername(e.target.value)}/>
                 <br />
-                <input type="email" placeholder='Enter E-mail' className='form-control' onChange={(e)=>setEmail(e.target.value)} />
+                <input type="email" placeholder='Enter E-mail' className='form-control bg-secondary' onChange={(e)=>setEmail(e.target.value)} />
                 <br />
-                <input type="password" placeholder='Enter password' className='form-control' onChange={(e)=>setPassword(e.target.value)} />
+                <input type="password" placeholder='Enter password' className='form-control bg-secondary' onChange={(e)=>setPassword(e.target.value)} />
                 <br />
-                <input type="tel" placeholder='Enter phone'className='form-control' onChange={(e)=>setPhone(e.target.value )} />
+                <input type="tel" placeholder='Enter phone'className='form-control bg-secondary' onChange={(e)=>setPhone(e.target.value )} />
                 <br />
-                <button type='submit' className='btn btn-secondary w-100 form-control'>Signup</button>
+                <button type='submit' className='btn btn-secondary w-100 form-control bg-success'>Signup</button>
                 <br />
                 <p>Already have an account?    <Link to="/signin">Signin</Link>     </p>
             </form>

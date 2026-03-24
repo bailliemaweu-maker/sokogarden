@@ -16,6 +16,7 @@ const Makepayment = () => {
 
     
     const handlesubmit = async (e)=>{
+      e.preventDefault()
      setLoading("Please wait...")
 
     //  Create an  empty envelope  
