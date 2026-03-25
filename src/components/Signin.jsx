@@ -29,7 +29,8 @@ const Signin = () => {
         setSuccess(response.data.message)
         setLoading("")
     } catch (error) {
-        
+        setError(error.message)
+      setLoading("")
     }
     }
 
@@ -46,9 +47,9 @@ const Signin = () => {
 
 
                 <form action="" onSubmit={handlesubmit} className='bg-white' >
-                    <input type="text" placeholder='Enter Email' className='form-control bg-secondary' onChange={(e)=> setEmail(e.target.value)} />
+                    <input type="text" placeholder='📧Enter Email' className='form-control bg-secondary' onChange={(e)=> setEmail(e.target.value)} />
                     <br />
-                    <input type="password" placeholder='Enter Password'className='form-control bg-secondary' onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" placeholder='🔑Enter Password'className='form-control bg-secondary' onChange={(e) => setPassword(e.target.value)} />
                     <br />
                     <button className='btn btn-info form-control w-100 bg-success'>Signin</button>
                     <br />

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import'bootstrap/dist/css/bootstrap.min.css';
 import'bootstrap/dist/js/bootstrap.min.js';
@@ -24,7 +24,7 @@ function App() {
         <Link to="/signup" className='btn btn-info m-3'>Signup</Link> 
         <Link to="/signin" className='btn btn-info m-3'>Signin </Link>
         <Link to="/addproduct"  className='btn btn-info m-3'>Add product </Link>
-        <Link to="/" className='btn btn-info m-3'>Get products </Link>
+        <Link to="/" className='btn btn-info m-3'>🎮Get products </Link>
 
 
       </nav>

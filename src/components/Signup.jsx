@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, {useState} from 'react' 
-import { use } from 'react'
+
 import { Link } from 'react-router-dom'
 
 const Signup = () => {
@@ -35,7 +35,8 @@ const Signup = () => {
       setSuccess(response.data.message)
       setLoading("")
     } catch (error) {
-      
+      setError(error.message)
+      setLoading("")
     }
   }
 
@@ -53,11 +54,11 @@ const Signup = () => {
             <form action="" onSubmit={handlesubmit} className='bg-white'>
                 <input type="text" placeholder='Enter username' className='form-control  bg-secondary' onChange={(e)=>setUsername(e.target.value)}/>
                 <br />
-                <input type="email" placeholder='Enter E-mail' className='form-control bg-secondary' onChange={(e)=>setEmail(e.target.value)} />
+                <input type="email" placeholder='📧Enter E-mail' className='form-control bg-secondary' onChange={(e)=>setEmail(e.target.value)} />
                 <br />
-                <input type="password" placeholder='Enter password' className='form-control bg-secondary' onChange={(e)=>setPassword(e.target.value)} />
+                <input type="password" placeholder='🔑Enter password' className='form-control bg-secondary' onChange={(e)=>setPassword(e.target.value)} />
                 <br />
-                <input type="tel" placeholder='Enter phone'className='form-control bg-secondary' onChange={(e)=>setPhone(e.target.value )} />
+                <input type="tel" placeholder='📱Enter phone'className='form-control bg-secondary' onChange={(e)=>setPhone(e.target.value )} />
                 <br />
                 <button type='submit' className='btn btn-secondary w-100 form-control bg-success'>Signup</button>
                 <br />

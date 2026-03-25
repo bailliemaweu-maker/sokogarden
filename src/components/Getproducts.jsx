@@ -19,7 +19,8 @@ let navigate = useNavigate();
         setProducts(response.data)
         setLoading("")
        } catch (error) {
-        
+        setError(error.message)
+      setLoading("")
        }
   }
   // call the Function 
@@ -38,7 +39,7 @@ let navigate = useNavigate();
 
 
 
-        <h1 className='text-primary'>Available products</h1>
+        <h1 className='text-black bg-white'>Available products</h1>
         {/* bind the states  */}
         <h2 className='text-warning text-center'>{loading} </h2>
         <h2 className='text-danger text-center'>{error} </h2>

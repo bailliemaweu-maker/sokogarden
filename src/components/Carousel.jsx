@@ -15,7 +15,7 @@ const Carousel = () => {
 
                         {/* <!-- division with image 2  --> */}
                         <div class="carousel-item active">
-                            <img src="images/download (1).jpeg" alt="" width="100%" height="500px"/>
+                            <img src="images/adb94a9b-27fc-4ac8-b96c-82dcb9d054cb.png" alt="" width="100%" height="500px"/>
                         </div>
                         
                         {/* <!-- division with image 3 --> */}
