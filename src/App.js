@@ -9,6 +9,7 @@ import Signin from './components/Signin';
 import Addproduct from './components/Addproduct';
 import Getproducts from './components/Getproducts';
 import Makepayment from './components/Makepayment';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -40,7 +41,7 @@ function App() {
 
     </Routes>
 
-      
+      <Footer/>
 
     </div>
     </BrowserRouter>
