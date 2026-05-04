@@ -12,7 +12,8 @@ let navigate = useNavigate();
   
   // STEP 1 
   const[search,setSearch] = useState ("")
-
+  const[Visisblecount, setVisibleCount] = useState ("")
+ 
   // STEP 2 
     const filtered_products =products.filter((item)=>
         item.product_name.toLowerCase().includes(search.toLowerCase())||
@@ -68,7 +69,7 @@ let navigate = useNavigate();
         
         <h2 className='text-warning text-center'>{loading} </h2>
         <h2 className='text-danger text-center'>{error} </h2>
-        {filtered_products.map(singleproduct=>(
+        {filtered_products.slice(0,Visisblecount).map(singleproduct=>(
            <div className="col-md-3 p-6 mb-3">
             <div className='card shadow h-100'>
 
@@ -97,6 +98,18 @@ let navigate = useNavigate();
           </div>
           </div>
         ))}
+
+        {/* Load more button  */}
+        <div className="text-center mt-3">
+          {Visisblecount< filtered_products.length &&(
+            <button
+            className="btn btn-info"
+            onClick={() => setVisibleCount(Visisblecount +8)}>
+              LOAD MORE
+            </button>
+          )}
+
+        </div>
       </div>
     </div>
   )
