@@ -3,13 +3,23 @@ import Carousel from './Carousel'
 import React,{useState,useEffect} from 'react'
 import { useNavigate} from 'react-router-dom'
 
-
 const Getproducts = () => {
 let navigate = useNavigate();
   // declare our states here 
   const[loading,setLoading]= useState("")
   const[products,setProducts] =useState([])
   const[error,setError]=useState("")
+  
+  // STEP 1 
+  const[search,setSearch] = useState ("")
+
+  // STEP 2 
+    const filtered_products =products.filter((item)=>
+        item.product_name.toLowerCase().includes(search.toLowerCase())||
+        
+        item.product_description.toLowerCase().includes(search.toLowerCase())
+        );
+
 
   // Function to Getproduct 
   const getproducts = async ()=>{
@@ -29,25 +39,43 @@ let navigate = useNavigate();
   },[])
     console.log(products)
     const imagepath ="http://b4illi3kifaru.alwaysdata.net/static/images/"
+
+
+       
+
+
   return (
     <div className="container fluid">
       <div className="row">
+
+         <div className="row justify-content-center mt-3 mb-3">
+          <input
+          className="form-control w-50"
+          type="search"
+          placeholder="Search Products..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+
+
         {/* Carousel goes here   */}
         <Carousel/>
 
-
-
-
-
         <h1 className='text-black bg-white'>Available products</h1>
         {/* bind the states  */}
+
+        
         <h2 className='text-warning text-center'>{loading} </h2>
         <h2 className='text-danger text-center'>{error} </h2>
-        {products.map(singleproduct=>(
+        {filtered_products.map(singleproduct=>(
            <div className="col-md-3 p-6 mb-3">
             <div className='card shadow h-100'>
 
+             
             <img src={imagepath + singleproduct.product_photo} alt="" style={{height:"200px"}}/>
+
+            
 
             {/* card body goes here  */}
             <div className="card-body">
