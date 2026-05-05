@@ -16,6 +16,9 @@ const Signup = () => {
     const[success, setSuccess] = useState("")
     const[error, setError]= useState("")
 
+    // STEP 1 GOES HERE 
+    const[strength, setStrength] = useState("")
+
     // Function to handle submit 
     const handlesubmit = async(e) =>{
       e.preventDefault()
@@ -40,6 +43,18 @@ const Signup = () => {
     }
   }
 
+
+  const checkPasswordStrength = (password) => {
+    if(password.length <4){
+      setStrength("weak");
+    } else if (password.length <8){
+      setStrength("medium");
+    } else{
+      setStrength("strong");
+    }
+  };
+
+
   return (
     <div className="row mt-2n justify-content-center">
         <div className='col-md-6 card shadow'>
@@ -56,7 +71,31 @@ const Signup = () => {
                 <br />
                 <input type="email" placeholder='📧Enter E-mail' className='form-control bg-secondary' onChange={(e)=>setEmail(e.target.value)} />
                 <br />
-                <input type="password" placeholder='🔑Enter password' className='form-control bg-secondary' onChange={(e)=>setPassword(e.target.value)} />
+                <input 
+                type="password" 
+                placeholder='🔑Enter password' 
+                className='form-control bg-secondary' 
+                onChange={(e)=>{
+                  setPassword(e.target.value);
+                  checkPasswordStrength(e.target.value);}} /> <br />
+                  {/* STEP 4 GOES HERE  */}
+
+                  { password && (
+                    <p
+                      style ={{
+                        color:
+                        strength === "weak"
+                        ? "red"
+                        :strength === "medium"
+                        ? "orange"
+                        : "green"
+                      }}
+                      >
+                        password strength: {strength}
+                    </p>
+                  )}
+
+
                 <br />
                 <input type="tel" placeholder='📱Enter phone'className='form-control bg-secondary' onChange={(e)=>setPhone(e.target.value )} />
                 <br />

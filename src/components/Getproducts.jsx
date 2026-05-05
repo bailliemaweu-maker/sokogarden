@@ -48,7 +48,8 @@ let navigate = useNavigate();
   return (
     <div className="container fluid">
       <div className="row">
-
+   {/* Carousel goes here   */}
+        <Carousel/>
          <div className="row justify-content-center mt-3 mb-3">
           <input
           className="form-control w-50"
@@ -60,8 +61,7 @@ let navigate = useNavigate();
         </div>
 
 
-        {/* Carousel goes here   */}
-        <Carousel/>
+     
 
         <h1 className='text-black bg-white'>Available products</h1>
         {/* bind the states  */}

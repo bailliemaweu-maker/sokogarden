@@ -10,6 +10,7 @@ import Addproduct from './components/Addproduct';
 import Getproducts from './components/Getproducts';
 import Makepayment from './components/Makepayment';
 import Footer from './components/Footer';
+import Competition from './components/Competition';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Link to="/signin" className='btn btn-info m-3'>Signin </Link>
         <Link to="/addproduct"  className='btn btn-info m-3'>Add product </Link>
         <Link to="/" className='btn btn-info m-3'>🎮Get products </Link>
+        <Link to="/competition" className='btn btn-info m-3'>Competitions</Link>
 
 
       </nav>
@@ -36,7 +38,7 @@ function App() {
       <Route path ='/signin' element= {<Signin/>}  />
       <Route path ='/addproduct' element= {<Addproduct/>}  />
       <Route path ='/makepayment' element= {<Makepayment/>}  />
-
+      <Route path='/competition' element= {<Competition/>} />
       
 
     </Routes>
