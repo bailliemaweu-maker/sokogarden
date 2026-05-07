@@ -7,8 +7,14 @@ const Aboutus = () => {
 
                 <h2>CONTACT AND LOCATION</h2>
                 <p>
+                  📍 Visit Us Today: <br />
+                Hazina Trade Centre, Nairobi <br /> <br />
 
+                  📞 Contact Us: <br />
+                0717733711
                 </p>
+
+                <h2>ABOUT US </h2>
             
                 Founded in 2010 by the Mwendwa family, Ulinzi Gaming has grown into a trusted name in the gaming industry, dedicated to providing high-quality consoles, accessories, and gaming experiences to players of all levels.
  <br />

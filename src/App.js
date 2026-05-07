@@ -1,9 +1,9 @@
 
 import './App.css';
-import'bootstrap/dist/css/bootstrap.min.css';
-import'bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
-import { BrowserRouter , Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
 import Addproduct from './components/Addproduct';
@@ -12,42 +12,44 @@ import Makepayment from './components/Makepayment';
 import Footer from './components/Footer';
 import Competition from './components/Competition';
 import Aboutus from './components/Aboutus';
+import Chatbot from './components/Chatbot';
 
 function App() {
 
   return (
     <BrowserRouter>
-    
-    <div className="App " >
-      <header className="App-header bg-warning">
-        <h1 className='bungee-regular' >Ulinzi Gaming welcome you </h1>
-      </header>
 
-      <nav className='bg-secondary'>
-        <Link to="/signup" className='btn btn-info m-3'>Signup</Link> 
-        <Link to="/signin" className='btn btn-info m-3'>Signin </Link>
-        <Link to="/addproduct"  className='btn btn-info m-3'>Add product </Link>
-        <Link to="/" className='btn btn-info m-3'>🎮Get products </Link>
-        <Link to="/competition" className='btn btn-info m-3'>Competitions</Link>
-        <Link to= "/aboutus" className='btn btn-info m-3'>About us</Link>
+      <div className="App " >
+        <header className="App-header bg-warning">
+          <h1 className='bungee-regular' >Ulinzi Gaming welcome you </h1>
+        </header>
 
-      </nav>
+        <nav className='bg-secondary'>
+          <Link to="/signup" className='btn btn-info m-3'>Signup</Link>
+          <Link to="/signin" className='btn btn-info m-3'>Signin </Link>
+          <Link to="/addproduct" className='btn btn-info m-3'>Add product </Link>
+          <Link to="/" className='btn btn-info m-3'>🎮Get products </Link>
+          <Link to="/competition" className='btn btn-info m-3'>Competitions</Link>
+          <Link to="/aboutus" className='btn btn-info m-3'>About us</Link>
 
-    <Routes>
-      <Route path ='/' element= {<Getproducts/>}  />
-      <Route path ='/signup' element= {<Signup />} />
-      <Route path ='/signin' element= {<Signin/>}  />
-      <Route path ='/addproduct' element= {<Addproduct/>}  />
-      <Route path ='/makepayment' element= {<Makepayment/>}  />
-      <Route path='/competition' element= {<Competition/>} />
-      <Route path='/aboutus' element= {<Aboutus/>} />
-      
+        </nav>
 
-    </Routes>
+        <Routes>
+          <Route path='/' element={<Getproducts />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/signin' element={<Signin />} />
+          <Route path='/addproduct' element={<Addproduct />} />
+          <Route path='/makepayment' element={<Makepayment />} />
+          <Route path='/competition' element={<Competition />} />
+          <Route path='/aboutus' element={<Aboutus />} />
 
-      <Footer/>
 
-    </div>
+        </Routes>
+
+        <Footer />
+        <Chatbot />
+
+      </div>
     </BrowserRouter>
   );
 }
