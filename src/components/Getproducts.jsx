@@ -4,113 +4,184 @@ import React,{useState,useEffect} from 'react'
 import { useNavigate} from 'react-router-dom'
 
 const Getproducts = () => {
-let navigate = useNavigate();
-  // declare our states here 
-  const[loading,setLoading]= useState("")
-  const[products,setProducts] =useState([])
-  const[error,setError]=useState("")
-  
-  // STEP 1 
-  const[search,setSearch] = useState ("")
-  const[Visisblecount, setVisibleCount] = useState ("")
- 
-  // STEP 2 
-    const filtered_products =products.filter((item)=>
-        item.product_name.toLowerCase().includes(search.toLowerCase())||
-        
-        item.product_description.toLowerCase().includes(search.toLowerCase())
-        );
 
+  let navigate = useNavigate();
 
-  // Function to Getproduct 
-  const getproducts = async ()=>{
-       setLoading("Please wait...")
-       try {
-        const response = await axios.get("http://b4illi3kifaru.alwaysdata.net/api/getproducts")
-        setProducts(response.data)
-        setLoading("")
-       } catch (error) {
-        setError(error.message)
+  // states
+  const [loading,setLoading] = useState("")
+  const [products,setProducts] = useState([])
+  const [error,setError] = useState("")
+
+  const [search,setSearch] = useState("")
+  const [VisibleCount, setVisibleCount] = useState(8)
+
+  // category state
+  const [selectedCategory, setSelectedCategory] = useState("All")
+
+  // get unique categories
+  const categories = ["All", ...new Set(products.map(item => item.category))]
+
+  // filter products
+  const filtered_products = products.filter((item) => {
+
+    const matchesSearch =
+      item.product_name.toLowerCase().includes(search.toLowerCase()) ||
+      item.product_description.toLowerCase().includes(search.toLowerCase())
+
+    const matchesCategory =
+      selectedCategory === "All" ||
+      item.category === selectedCategory
+
+    return matchesSearch && matchesCategory
+  })
+
+  // get products
+  const getproducts = async () => {
+
+    setLoading("Please wait...")
+
+    try {
+
+      const response = await axios.get(
+        "http://b4illi3kifaru.alwaysdata.net/api/getproducts"
+      )
+
+      setProducts(response.data)
       setLoading("")
-       }
+
+    } catch (error) {
+
+      setError(error.message)
+      setLoading("")
+    }
   }
-  // call the Function 
-  useEffect(()=>{
+
+  useEffect(() => {
     getproducts()
-  },[])
-    console.log(products)
-    const imagepath ="http://b4illi3kifaru.alwaysdata.net/static/images/"
+  }, [])
 
-
-       
-
+  const imagepath ="http://b4illi3kifaru.alwaysdata.net/static/images/"
 
   return (
-    <div className="container fluid">
+
+    <div className="container-fluid">
+
       <div className="row">
-   {/* Carousel goes here   */}
+
+        {/* carousel */}
         <Carousel/>
-         <div className="row justify-content-center mt-3 mb-3">
+
+        {/* search */}
+        <div className="row justify-content-center mt-3 mb-3">
+
           <input
-          className="form-control w-50"
-          type="search"
-          placeholder="Search Products..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+            className="form-control w-50"
+            type="search"
+            placeholder="Search Products..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
+
         </div>
 
+        {/* category buttons */}
+        <div className="text-center mb-4 bg-secondary">
 
-     
+          {categories.map((category,index) => (
 
-        <h1 className='text-black bg-white'>Available products</h1>
-        {/* bind the states  */}
+            <button
+              key={index}
+              className={`btn m-2 ${
+                selectedCategory === category
+                  ? "btn-info"
+                  : "btn-outline-dark"
+              }`}
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category}
+            </button>
 
-        
-        <h2 className='text-warning text-center'>{loading} </h2>
-        <h2 className='text-danger text-center'>{error} </h2>
-        {filtered_products.slice(0,Visisblecount).map(singleproduct=>(
-           <div className="col-md-3 p-6 mb-3">
+          ))}
+
+        </div>
+
+        <h1 className='text-black bg-white text-center'>
+          Available Products
+        </h1>
+
+        <h2 className='text-warning text-center'>{loading}</h2>
+
+        <h2 className='text-danger text-center'>{error}</h2>
+
+        {/* products */}
+        {filtered_products
+          .slice(0, VisibleCount)
+          .map(singleproduct => (
+
+          <div
+            className="col-md-3 p-3 mb-3"
+            key={singleproduct.product_id}
+          >
+
             <div className='card shadow h-100'>
 
-             
-            <img src={imagepath + singleproduct.product_photo} alt="" style={{height:"200px"}}/>
+              <img
+                src={imagepath + singleproduct.product_photo}
+                alt=""
+                style={{height:"200px", objectFit:"cover"}}
+              />
 
-            
+              <div className="card-body">
 
-            {/* card body goes here  */}
-            <div className="card-body">
-              {/* product name goes here  */}
-              <h2>{singleproduct.product_name} </h2>
+                <h2>{singleproduct.product_name}</h2>
 
-              {/* product description goes here   */}
-              <p>{singleproduct.product_description} </p>
+                <p>{singleproduct.product_description}</p>
 
-              {/* product cost goes here  */}
-              <b className='text-success'>{singleproduct.product_cost} </b>
-              <br />
+                <h5 className='text-primary'>
+                  {singleproduct.category}
+                </h5>
 
-              {/* purchase button goes here  */}
-            {/* image goes here  */}
-              <button className='btn btn-warning form-control' onClick={()=> navigate("/makepayment",{state:{singleproduct}})}>Purchase Now</button>
+                <b className='text-success'>
+                  Ksh {singleproduct.product_cost}
+                </b>
 
-             </div>
+                <br /><br />
+
+                <button
+                  className='btn btn-warning form-control'
+                  onClick={() =>
+                    navigate("/makepayment",{state:{singleproduct}})
+                  }
+                >
+                  Purchase Now
+                </button>
+
+              </div>
+
+            </div>
+
           </div>
-          </div>
+
         ))}
 
-        {/* Load more button  */}
-        <div className="text-center mt-3">
-          {Visisblecount< filtered_products.length &&(
+        {/* load more */}
+        <div className="text-center mt-3 mb-4">
+
+          {VisibleCount < filtered_products.length && (
+
             <button
-            className="btn btn-info"
-            onClick={() => setVisibleCount(Visisblecount +8)}>
+              className="btn btn-info"
+              onClick={() => setVisibleCount(VisibleCount + 8)}
+            >
               LOAD MORE
             </button>
+
           )}
 
         </div>
+
       </div>
+
     </div>
   )
 }
